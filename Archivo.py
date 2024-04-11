@@ -60,6 +60,15 @@ def contarPalabras():
     
     return Lista
 
+def bubleSort(Arreglo, Diccionario):
+
+    for i in len(Arreglo):
+        for j in len(Arreglo - 1):
+
+            if(Arreglo[i] > Arreglo[i + 1]):
+                Temporal = Arreglo[i + 1]
+                temporalDiccionario = Arreglo[i + 1];
+
 #print(leerArchivo("C:/Users/GuzDa/OneDrive/Documentos/Algoritmos/Huffman/Gullivers_Travels.txt"));    
 contarPalabras()
 
