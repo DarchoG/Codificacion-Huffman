@@ -1,4 +1,6 @@
 import os
+from tkinter import *
+from tkinter import ttk
 
 def generarDiccionario():
     
@@ -70,7 +72,24 @@ def bubleSort(Arreglo, Diccionario):
                 temporalDiccionario = Arreglo[i + 1];
 
 #print(leerArchivo("C:/Users/GuzDa/OneDrive/Documentos/Algoritmos/Huffman/Gullivers_Travels.txt"));    
-contarPalabras()
+#contarPalabras()
 
-#Diccionario = generarDiccionario()
+#
+
+Ventana = Tk();
+Frame = ttk.Frame(Ventana, padding=50)
+Frame.grid()
+ttk.Button(Frame, text = "Abrir").grid(column=0, row=0)
+Ventana.mainloop()
+
+# os.getcwd() Retornar Directorio
+# os.mkdir() Crear carpeta
+
+#1614
+#btn = ttk.Button(Frame)
+#print(btn.configure().keys()) Me regresa todas las posibles configuraciones o elementos a editar de cada label
+
+#Progres Bar (Mostrar de manera interactiva el progreso del usuario)
+
+#Diccionario = generarDiccionario() 
 #print(Diccionario["’"]);
