@@ -19,22 +19,21 @@ def inicio(ventana):
     ventana.configure(bg = '#19191a')
 
     textoFrame = tk.Frame(ventana, width = proporcionAncho(50, ventana, anchoVentana), height = proporcionLargo(70, ventana, largoVentana), background="red")
-    textoFrame.grid(row = 0, column = 0)
+    textoFrame.grid(row = 0, column = 0,)
 
     graficaFrame = tk.Frame(ventana, width = proporcionAncho(50, ventana, anchoVentana), height = proporcionLargo(70, ventana, largoVentana), background="blue")
-    graficaFrame.grid(row = 0, column = 1)
+    graficaFrame.grid(row = 0, column = 1,)
 
-    botonesFrame = tk.Frame(ventana, width = proporcionAncho(100, ventana, anchoVentana), height = proporcionLargo(20, ventana, largoVentana), background='green')
+    botonesFrame = tk.Frame(ventana, width = proporcionAncho(100, ventana, anchoVentana), height = proporcionLargo(20, ventana, largoVentana), background='#19191a', pady = 45)
     botonesFrame.grid(row = 1, column = 0, columnspan= 2)
 
     boton = crearBoton(botonesFrame, "Examinar", examinarArchivo);
-    boton.grid(row = 0, column = 0);
+    boton.grid(row = 0, column = 0,);
 
-    boton2 = crearBoton(botonesFrame, "Comprimir");
-    
-    boton2.grid(row = 0, column = 1);
+    boton2 = crearBoton(botonesFrame, "Comprimir", None); #None es suceptible de ser remplazado por cualquier otro evento.
+    boton2.grid(row = 0, column = 1, padx=20);
 
-    boton3 = crearBoton(botonesFrame, "Descomprimir");
+    boton3 = crearBoton(botonesFrame, "Descomprimir", None); #None es susceptible de ser remplazado por cualquier otro evento.
     boton3.grid(row=0, column=2);
 
     ventana.mainloop();
@@ -67,7 +66,7 @@ def crearBoton(ventana, texto, comando = None):
         font=("Helvetica", 12, "bold"),
         width = proporcionAncho(1.5, ventana), #Obtener Proporciones
         height = proporcionLargo(0.3, ventana), #Obtener Proporciones
-        borderwidth=0,
+        borderwidth=1,
         cursor = "hand2",
         relief = tk.RAISED,
         command = comando 
@@ -77,13 +76,14 @@ def crearBoton(ventana, texto, comando = None):
 
 def examinarArchivo():
     # Abrir el explorador de archivos
-    ruta_archivo = filedialog.askopenfilename()
-
-    # Mostrar la ruta del archivo seleccionado
-    if ruta_archivo:
-        print("Ruta del archivo seleccionado:", ruta_archivo)
+    rutaArchivo = filedialog.askopenfilename()
+    
+    if rutaArchivo:
+        print("Ruta del archivo seleccionado:", rutaArchivo)
     else:
         print("No se seleccionó ningún archivo.")
+
+    return rutaArchivo    
 
 ventana = tk.Tk();
 inicio(ventana)
