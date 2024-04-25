@@ -8,46 +8,64 @@ def inicio(ventana):
 
     Ancho = ventana.winfo_screenwidth();
     Largo = ventana.winfo_screenheight();
-    ventana.geometry(str(int(Ancho * 60 / 100))+ "x" + str(int(Largo * 60 / 100)))
+   
+    anchoPorcentaje = 60
+    largoPorcentaje = 60
+
+    anchoVentana = int(Ancho * anchoPorcentaje / 100);
+    largoVentana = int(Largo * largoPorcentaje / 100);
+
+    ventana.geometry(str(anchoVentana)+ "x" + str(largoVentana))
     ventana.configure(bg = '#19191a')
 
-    gris = tk.Frame(ventana, bg = '#19191a')
+    textoFrame = tk.Frame(ventana, width = proporcionAncho(50, ventana, anchoVentana), height = proporcionLargo(70, ventana, largoVentana), background="red")
+    textoFrame.grid(row = 0, column = 0)
 
-    boton = crearBoton(ventana, "Examinar", examinarArchivo);
+    graficaFrame = tk.Frame(ventana, width = proporcionAncho(50, ventana, anchoVentana), height = proporcionLargo(70, ventana, largoVentana), background="blue")
+    graficaFrame.grid(row = 0, column = 1)
+
+    botonesFrame = tk.Frame(ventana, width = proporcionAncho(100, ventana, anchoVentana), height = proporcionLargo(20, ventana, largoVentana), background='green')
+    botonesFrame.grid(row = 1, column = 0, columnspan= 2)
+
+    boton = crearBoton(botonesFrame, "Examinar", examinarArchivo);
     boton.grid(row = 0, column = 0);
 
-    boton2 = crearBoton(ventana, "Comprimir");
+    boton2 = crearBoton(botonesFrame, "Comprimir");
     
-    boton2.grid(row = 1, column = 0);
+    boton2.grid(row = 0, column = 1);
 
-    boton3 = crearBoton(ventana, "Descomprimir");
-    boton3.grid(row=2, column=0);
-    
-    boton2.grid(row = 1, column = 0);
-    
+    boton3 = crearBoton(botonesFrame, "Descomprimir");
+    boton3.grid(row=0, column=2);
+
     ventana.mainloop();
 
-def proporcionAncho(X, Ventana):
+def proporcionAncho(X, Ventana, Ancho = None):
 
-    Ancho = Ventana.winfo_screenwidth(); #Brinda el ancho de la pantalla actual, a fin de calcular proporciones
+    if(Ancho is None):
+
+        Ancho = Ventana.winfo_screenwidth(); #Brinda el ancho de la pantalla actual, a fin de calcular proporciones
+        return int((Ancho * X)/100);
 
     return int((Ancho * X)/100);
 
-def proporcionLargo(X, Ventana):
+def proporcionLargo(X, Ventana, Largo = None):
 
-    Largo = Ventana.winfo_screenheight(); #Brinda el largo de la pantalla actual, a fin de calcular proporciones
+    if(Largo is None):
+
+        Largo = Ventana.winfo_screenheight(); #Brinda el largo de la pantalla actual, a fin de calcular proporciones
+        return int((Largo * X)/100);
 
     return int((Largo * X)/100);
 
 def crearBoton(ventana, texto, comando = None):
 
     boton = tk.Button(
-        ventana, #Ventana pertenencia
+        ventana, #Ventana  o frame de pertenencia
         text = texto,
         background="#373739", #Fondo
         foreground="white", # Color de la letra
         font=("Helvetica", 12, "bold"),
-        width = proporcionAncho(2, ventana), #Obtener Proporciones
+        width = proporcionAncho(1.5, ventana), #Obtener Proporciones
         height = proporcionLargo(0.3, ventana), #Obtener Proporciones
         borderwidth=0,
         cursor = "hand2",
