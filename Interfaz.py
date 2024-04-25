@@ -19,7 +19,16 @@ def inicio(ventana):
     ventana.configure(bg = '#19191a')
 
     textoFrame = tk.Frame(ventana, width = proporcionAncho(50, ventana, anchoVentana), height = proporcionLargo(70, ventana, largoVentana), background="red")
-    textoFrame.grid(row = 0, column = 0,)
+    textoFrame.grid(row = 0, column = 0, sticky="nswe")
+
+    contenidoPalabras = tk.Text(textoFrame, wrap="word", state="disabled")
+    contenidoPalabras.grid(row=0, column=0, sticky="nswe")
+    contenidoPalabras.grid_rowconfigure(0, weight=1)  # Hacer que la fila se expanda
+    contenidoPalabras.grid_columnconfigure(0, weight=1)
+
+    scrollbar = tk.Scrollbar(ventana, command=contenidoPalabras.yview)
+    scrollbar.grid(row=0, column=1, sticky='ns')
+    contenidoPalabras.config(yscrollcommand=scrollbar.set)
 
     graficaFrame = tk.Frame(ventana, width = proporcionAncho(50, ventana, anchoVentana), height = proporcionLargo(70, ventana, largoVentana), background="blue")
     graficaFrame.grid(row = 0, column = 1,)
