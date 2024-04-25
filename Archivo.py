@@ -44,7 +44,7 @@ def contarPalabras():
 
     for i in Archivo:
 
-        print(i);
+        #print(i);
 
         try: 
 
@@ -62,25 +62,27 @@ def contarPalabras():
     
     return Lista
 
-def bubleSort(Arreglo, Diccionario):
+def swarp(a, b):
 
-    for i in len(Arreglo):
-        for j in len(Arreglo - 1):
+    Temporal = a;
+    a = b;
+    b = Temporal
 
-            if(Arreglo[i] > Arreglo[i + 1]):
-                Temporal = Arreglo[i + 1]
-                temporalDiccionario = Arreglo[i + 1];
+def particion (Diccionario, Inicio, Final):
+
+    pivote = Diccionario[Inicio].key();
+    i = Diccionario[Inicio + 1].key();
+
+    for i in range(Final - Inicio):
+        if(pivote >= Diccionario[i]):
+            pass
+            
+def quicksort(Arreglo, Diccionario):
+
+    pass
 
 #print(leerArchivo("C:/Users/GuzDa/OneDrive/Documentos/Algoritmos/Huffman/Gullivers_Travels.txt"));    
-#contarPalabras()
-
-#
-
-Ventana = Tk();
-Frame = ttk.Frame(Ventana, padding=50)
-Frame.grid()
-ttk.Button(Frame, text = "Abrir").grid(column=0, row=0)
-Ventana.mainloop()
+contarPalabras()
 
 # os.getcwd() Retornar Directorio
 # os.mkdir() Crear carpeta
@@ -91,5 +93,4 @@ Ventana.mainloop()
 
 #Progres Bar (Mostrar de manera interactiva el progreso del usuario)
 
-#Diccionario = generarDiccionario() 
-#print(Diccionario["’"]);
+##print(Diccionario["’"]);
