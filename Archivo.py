@@ -31,58 +31,54 @@ def leerArchivo(Archivo):
     
 def contarPalabras():
 
-    
-    #Diccionario = generarDiccionario();
-    Contador = 0
     Diccionario = {};
     Archivo = leerArchivo("C:/Users/GuzDa/OneDrive/Documentos/Algoritmos/Huffman/Gullivers_Travels.txt")
-    Lista = []
-
-    for i in range(len(Diccionario)):
-
-        Lista.append(0);
-
     for i in Archivo:
-
-        #print(i);
 
         try: 
 
-            Lista[Diccionario[i]] += 1;
+            Diccionario[i] += 1
 
         except:
+            Diccionario[i] = 1
 
-            Lista.append(1)
-            Diccionario[i] = Contador
+    return Diccionario
 
-            Contador += 1
+def swap(Diccionario, A, B):
 
-    print(Diccionario);
-    print(Lista);      
-    
-    return Lista
+    Temporal = Diccionario[A]
+    Diccionario[A] = Diccionario[B];
+    Diccionario[B] = Temporal
 
-def swarp(a, b):
+def particion(Diccionario, Inicio, Final):
 
-    Temporal = a;
-    a = b;
-    b = Temporal
+    pivote = Diccionario[Inicio][1];
+    i = Inicio + 1
 
-def particion (Diccionario, Inicio, Final):
+    for j in range(Inicio, Final):
+        if(pivote > Diccionario[j][1]):
+            swap(Diccionario, Diccionario[i], Diccionario[j])
+            i += 1
 
-    pivote = Diccionario[Inicio].key();
-    i = Diccionario[Inicio + 1].key();
+    swap(Diccionario[Inicio], Diccionario[i - 1])
 
-    for i in range(Final - Inicio):
-        if(pivote >= Diccionario[i]):
-            pass
+    return i - 1
             
-def quicksort(Arreglo, Diccionario):
+def quicksort(Diccionario, Inicio, Final):
 
-    pass
+    if(Final >= Inicio):
+
+        Pivote = particion(Diccionario, Inicio, Final)
+        quicksort(Diccionario, Inicio, Pivote - 1)
+        quicksort(Diccionario, Pivote + 1, Final)
+
+Palabras = list(contarPalabras().items())
+
+quicksort(Palabras, 0, len(Palabras) - 1);
+
+print(Palabras)
 
 #print(leerArchivo("C:/Users/GuzDa/OneDrive/Documentos/Algoritmos/Huffman/Gullivers_Travels.txt"));    
-contarPalabras()
 
 # os.getcwd() Retornar Directorio
 # os.mkdir() Crear carpeta
