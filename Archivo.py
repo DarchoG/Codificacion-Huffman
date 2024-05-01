@@ -55,12 +55,12 @@ def particion(Diccionario, Inicio, Final):
     pivote = Diccionario[Inicio][1];
     i = Inicio + 1
 
-    for j in range(Inicio, Final):
-        if(pivote > Diccionario[j][1]):
-            swap(Diccionario, Diccionario[i], Diccionario[j])
+    for j in range(Inicio, Final + 1):
+        if(pivote < Diccionario[j][1]):
+            swap(Diccionario, i, j)
             i += 1
 
-    swap(Diccionario[Inicio], Diccionario[i - 1])
+    swap(Diccionario, Inicio, i - 1)
 
     return i - 1
             
