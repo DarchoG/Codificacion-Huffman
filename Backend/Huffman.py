@@ -71,7 +71,9 @@ def quicksort(Diccionario, Inicio, Final):
         quicksort(Diccionario, Pivote + 1, Final)
 
 Palabras = list(contarPalabras().items())
-
 quicksort(Palabras, 0, len(Palabras) - 1);
 
-print(Arbol.generarCodigos(Arbol.construirArbol(Palabras)));
+Contenido = leerArchivo("C:/Users/GuzDa/OneDrive/Documentos/Algoritmos/Huffman/Gullivers_Travels.txt")
+arbolHuffman = Arbol.arbolHuffman()
+print(arbolHuffman.comprimir("C:/Users/GuzDa/OneDrive/Documentos/Algoritmos/Huffman/Gullivers_Travels.txt", Contenido, Palabras))
+arbolHuffman.descomprimir()
