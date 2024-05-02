@@ -1,6 +1,4 @@
-import os
-from tkinter import *
-from tkinter import ttk
+import Arbol
 
 def generarDiccionario():
     
@@ -56,7 +54,7 @@ def particion(Diccionario, Inicio, Final):
     i = Inicio + 1
 
     for j in range(Inicio, Final + 1):
-        if(pivote < Diccionario[j][1]):
+        if(pivote > Diccionario[j][1]):
             swap(Diccionario, i, j)
             i += 1
 
@@ -76,17 +74,4 @@ Palabras = list(contarPalabras().items())
 
 quicksort(Palabras, 0, len(Palabras) - 1);
 
-print(Palabras)
-
-#print(leerArchivo("C:/Users/GuzDa/OneDrive/Documentos/Algoritmos/Huffman/Gullivers_Travels.txt"));    
-
-# os.getcwd() Retornar Directorio
-# os.mkdir() Crear carpeta
-
-#1614
-#btn = ttk.Button(Frame)
-#print(btn.configure().keys()) Me regresa todas las posibles configuraciones o elementos a editar de cada label
-
-#Progres Bar (Mostrar de manera interactiva el progreso del usuario)
-
-##print(Diccionario["’"]);
+print(Arbol.generarCodigos(Arbol.construirArbol(Palabras)));
